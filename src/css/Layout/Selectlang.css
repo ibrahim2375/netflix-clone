@@ -1,0 +1,14 @@
+.select_language {
+  border: 0.7px solid white;
+  padding: 8px 20px;
+  background-color: transparent;
+  color: white;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+}
+.select_language option {
+  background-color: gray;
+}
