@@ -1,0 +1,114 @@
+/* font */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+section {
+  /* height: 50vh; */
+  background-color: black;
+  color: white;
+  font-family: "Open Sans", sans-serif;
+}
+section .content {
+  padding: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+
+section .content .left_side .title {
+  font-weight: 700;
+  font-size: 3rem;
+  max-width: 65%;
+  margin-bottom: 20px;
+}
+section .content .left_side .decription {
+  font-weight: 600;
+  max-width: 70%;
+  font-size: 1.2rem;
+  letter-spacing: 1.5px;
+}
+section .content .right_side {
+  position: relative;
+}
+section .content .right_side .short_clip {
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  /* z-index: 99; */
+}
+section .content .right_side .short_clip video {
+  width: 260px;
+  z-index: 99;
+  height: 135px;
+  transform: translate(25%, 28%);
+  -webkit-transform: translate(25%, 28%);
+  -moz-transform: translate(25%, 28%);
+  -ms-transform: translate(25%, 28%);
+  -o-transform: translate(25%, 28%);
+}
+section .content .right_side img {
+  z-index: 100;
+  object-fit: contain;
+  width: 380px;
+  height: 300px;
+  position: relative;
+}
+.left_side_flept {
+  order: 2;
+}
+.right_side_flept {
+  order: 1;
+}
+/* mobile */
+@media (max-width: 1250px) {
+  section .content .left_side .title {
+    font-weight: 600;
+    font-size: 2rem;
+    max-width: 100%;
+  }
+  section .content .left_side .decription {
+    font-weight: normal;
+    max-width: 70%;
+    font-size: 1.1rem;
+  }
+}
+@media (max-width: 992px) {
+  section .content {
+    position: relative;
+    padding: 40px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  section .content .left_side .title {
+    font-weight: bold;
+    font-size: 1.5rem;
+    max-width: 100%;
+    text-align: center;
+  }
+  section .content .left_side .decription {
+    font-weight: normal;
+    max-width: 100%;
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  section .content .right_side .short_clip video {
+    width: 170px;
+    height: 145px;
+    transform: translate(30%, 0%);
+    -webkit-transform: translate(30%, 0%);
+    -moz-transform: translate(30%, 0%);
+    -ms-transform: translate(30%, 0%);
+    -o-transform: translate(30%, 0%);
+  }
+
+  section .content .right_side img {
+    position: relative;
+    object-fit: contain;
+    width: 100%;
+    height: 200px;
+  }
+}
