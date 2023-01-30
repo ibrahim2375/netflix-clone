@@ -14,7 +14,7 @@ function Home() {
       description:
         "Watch on Smart TVs, Playstation, Xbox, Chromecast, Apple TV, Blu-ray players, and more.",
       img: "tv.png",
-      video: "",
+      video: "video-tv.m4v",
       flipt: false,
     },
     {
@@ -58,6 +58,7 @@ function Home() {
           img={data.img}
           video={data.video}
           flipt={data.flipt}
+          id={data.id}
         />
       ))}
       <Questions />
