@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 //components
 import Divider from "./Divider";
 //css style
 import "../../css/Home/Section.css";
-function Section({ title, description, img, video, flipt }) {
+function Section({ title, description, img, video, flipt, id }) {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const getWindowWidth = () => {
+    setWindowWidth(window.innerWidth);
+  };
+  useEffect(() => {
+    window.addEventListener("resize", getWindowWidth);
+    return () => {
+      window.removeEventListener("resize", getWindowWidth);
+    };
+  }, []);
+  //resolved manually
   return (
     <section>
       <div className="content">
@@ -15,7 +26,12 @@ function Section({ title, description, img, video, flipt }) {
           <img src={`${img}`} alt="" />
           <div className="short_clip">
             {video && (
-              <video muted autoPlay loop={true}>
+              <video
+                className={`${id === 0 ? "video_tv" : 'video'}`}
+                muted
+                autoPlay
+                loop={true}
+              >
                 <source src={`${video}`} alt="video" type="video/mp4"></source>
               </video>
             )}
