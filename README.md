@@ -19,6 +19,6 @@ npm run build
 
 ![home](/public/netflix_home.png)
 
-### Home Page
+### Movies Page
 
 ![movies](/public/netflix_movies.png)
