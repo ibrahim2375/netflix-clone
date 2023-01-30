@@ -111,7 +111,7 @@ function Row({ title, url, isLargeImg }) {
         //   :
            movies.map((movie) => (
               <img
-                onDoubleClick={() => handleTrailer(movie)}
+                onClick={() => handleTrailer(movie)}
                 className={`row_img ${isLargeImg && "row_img_large"} `}
                 key={movie.id}
                 src={`${import.meta.env?.VITE_IMAGE_BASE_URL}${
