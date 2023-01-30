@@ -37,3 +37,12 @@
   -ms-transform: scale(1.1);
   -o-transform: scale(1.1);
 }
+/* img skeleton */
+.img_skeleton {
+  background-color: #333;
+  animation: skeleton 0.5s 0 infinite ease-in-out forwards;
+  -webkit-animation: skeleton 0.5s 0 infinite ease-in-out forwards;
+  overflow: hidden;
+}
+
+

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+
 //css file
 import "../../css/Movies/Row.css";
 //movie trailer packge to get url from youtube
@@ -13,6 +14,7 @@ let isDown = false;
 
 function Row({ title, url, isLargeImg }) {
   const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [movieTrailer, setMovieTrailer] = useState("");
   // const [isDown, setIsDown] = useState(false);
   const row_movies_slider = useRef();
@@ -21,14 +23,21 @@ function Row({ title, url, isLargeImg }) {
     height: "390",
     width: "100%",
     playerVars: {
-      // https://developers.google.com/youtube/player_parameters
       autoplay: 1,
     },
   };
   //handle fetching api depend on section
   const fetchMovies = async () => {
-    const request = await axios.get(url);
-    setMovies(request?.data?.results);
+    setLoading(true);
+    const request = await axios
+      .get(url)
+      .then((response) => {
+        setMovies(response?.data?.results);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log(err?.message);
+      });
     return request;
   };
 
@@ -40,10 +49,15 @@ function Row({ title, url, isLargeImg }) {
       await MovieTrailer(movie?.name || movie?.title || "")
         .then((url) => {
           const urlParam = new URLSearchParams(new URL(url).search);
+          // const urlParam = new URL(url).searchParams;
           setMovieTrailer(urlParam.get("v"));
         })
-        .catch((err) => console.log(err));
+        .catch((err) => console.log(err.message));
     }
+  };
+  const onReady = (event) => {
+    // access to player in all event handlers via event.target
+    // event.target.pauseVideo();
   };
 
   useEffect(() => {
@@ -83,19 +97,33 @@ function Row({ title, url, isLargeImg }) {
     <div className="row">
       <h1>{title}</h1>
       <div className="row_movies" ref={row_movies_slider}>
-        {movies.map((movie) => (
-          <img
-            onClick={() => handleTrailer(movie)}
-            className={`row_img ${isLargeImg && "row_img_large"} `}
-            key={movie.id}
-            src={`${import.meta.env.VITE_IMAGE_BASE_URL}${
-              isLargeImg ? movie?.poster_path : movie?.backdrop_path
-            }`}
-            alt={movie?.name}
-          />
-        ))}
+        {/* chreck if there is loading or not if true show skeleton animation */}
+        {
+        // loading
+        //   ? Array.from({ length: 10 }).map((arr, i) => (
+        //       <div
+        //         key={i}
+        //         className={`img_skeleton row_img  ${
+        //           isLargeImg && "row_img_large"
+        //         } `}
+        //       ></div>
+        //     ))
+        //   :
+           movies.map((movie) => (
+              <img
+                onDoubleClick={() => handleTrailer(movie)}
+                className={`row_img ${isLargeImg && "row_img_large"} `}
+                key={movie.id}
+                src={`${import.meta.env?.VITE_IMAGE_BASE_URL}${
+                  isLargeImg ? movie?.poster_path : movie?.backdrop_path
+                }`}
+                alt={movie?.name}
+              />
+            ))}
       </div>
-      {movieTrailer && <YouTube videoId={movieTrailer} opts={opts} />}
+      {movieTrailer && (
+        <YouTube videoId={movieTrailer} opts={opts} onReady={onReady} />
+      )}
     </div>
   );
 }

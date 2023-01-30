@@ -16,8 +16,8 @@ function Movies() {
       <div className="rows">
         <Row
           title="NETFLEX ORIGINALS"
-          url={requests.NetflixOriginals}
           isLargeImg={true}
+          url={requests.NetflixOriginals}
         />
         <Row title="Trending Now" url={requests.Trending} />
         <Row title="Top Rated" url={requests.TopRated} />

@@ -31,7 +31,7 @@ function Landing() {
   return (
     <header
       style={{
-        backgroundImage: `url(${import.meta.env.VITE_IMAGE_BASE_URL}${
+        backgroundImage: `url(${import.meta.env?.VITE_IMAGE_BASE_URL}${
           movie?.backdrop_path
         })`,
         backgroundPosition: "center center",
