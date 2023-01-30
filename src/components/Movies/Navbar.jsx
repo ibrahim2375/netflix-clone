@@ -21,7 +21,9 @@ function Navbar() {
 
   return (
     <nav className={`${navShowBg && "black_nav"}`}>
-      <img className="nav_logo" src="logo.png" alt="logo" />
+      <a href="/">
+        <img className="nav_logo" src="logo.png" alt="logo" />
+      </a>
     </nav>
   );
 }
