@@ -28,7 +28,7 @@ function Questions() {
               className="question_head"
               onClick={() => handleDescreption(question.id)}
             >
-              <h2 className="head_title">{question.title}</h2>
+              <h3 className="head_title">{question.title}</h3>
               <span className="icon">
                 {showDescById === question.id && show ? "x" : "+"}
               </span>

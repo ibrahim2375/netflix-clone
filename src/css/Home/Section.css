@@ -4,7 +4,7 @@ section {
   /* height: 50vh; */
   background-color: black;
   color: white;
-  font-family: "Open Sans", sans-serif;
+  /* font-family: "Open Sans", sans-serif; */
 }
 section .content {
   padding: 100px;
@@ -16,7 +16,7 @@ section .content {
 
 section .content .left_side .title {
   font-weight: 700;
-  font-size: 3rem;
+  font-size: 2.4rem;
   max-width: 65%;
   margin-bottom: 20px;
 }
@@ -94,7 +94,7 @@ section .content .right_side img {
   }
   section .content .left_side .title {
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     max-width: 100%;
     text-align: center;
   }
